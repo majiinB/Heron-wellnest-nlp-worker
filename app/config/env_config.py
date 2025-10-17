@@ -33,7 +33,7 @@ class EnvConfig(BaseSettings):
 
     # Encryption
     CONTENT_ENCRYPTION_KEY: str = Field(
-        default="default_content_encryption_key_1234",
+        default="default_secret_key_which_is_at_least_32_chars!",
         min_length=32,
         description="Content encryption key must be at least 32 characters"
     )

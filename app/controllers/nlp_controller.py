@@ -1,8 +1,5 @@
 from app.services.nlp_service import NLPService
 from app.utils.logger_util import logger
-from app.repositories.journal_repository import get_journal_by_id, update_journal_mood
-from app.utils.crypto_utils import decrypt
-from app.config.env_config import env
 import asyncio
 
 class NLPcontroller:
