@@ -3,7 +3,7 @@ def start_worker():
     from google.cloud import pubsub_v1
     from app.services.nlp_service import NLPService
     from app.config.env_config import env
-    from app.repositories.journal_repository import get_journal_by_id, update_journal_mood
+    from app.repositories.journal_repository import get_journal_by_id, update_journal_wellness_state
     from app.utils.crypto_utils import decrypt
     import json
 
@@ -12,6 +12,7 @@ def start_worker():
 
     id_to_label = {
         0: "L1", # Anxiety
+        1: "L2", # Normal
         1: "L2", # Normal
         2: "L3", # Depression
         3: "L4", # Suicidal
@@ -55,8 +56,8 @@ def start_worker():
         preds = nlp_service.analyze_text(decrypted_content)
         print(f"🎯 Prediction: {preds}")
 
-        await update_journal_mood(journal_id, user_id, preds)
-        print(f"✅ Updated mood for journal {journal_id}")
+        await update_journal_wellness_state(journal_id, user_id, preds)
+        print(f"✅ Updated wellness state for journal {journal_id}")
 
     def callback(message):
         try:

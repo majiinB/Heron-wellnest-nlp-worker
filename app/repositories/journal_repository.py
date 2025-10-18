@@ -22,15 +22,15 @@ async def get_journal_by_id(journal_id: str, user_id: str):
     print(f"🧩 Encrypted content fetched: {encrypted_content}")
     return encrypted_content
 
-async def update_journal_mood(journal_id: str, user_id: str, mood: dict):
+async def update_journal_wellness_state(journal_id: str, user_id: str, wellness_state: dict):
     query = """
         UPDATE journal_entries
-        SET mood = :mood
+        SET wellness_state = :wellness_state
         WHERE journal_id = :journal_id AND user_id = :user_id
     """
     params = {
         "journal_id": journal_id,
         "user_id": user_id,
-        "mood": json.dumps(mood)
+        "wellness_state": json.dumps(wellness_state)
     }
     await execute_query(query, params)

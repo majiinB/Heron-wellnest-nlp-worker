@@ -1,5 +1,8 @@
+from app.repositories.journal_repository import get_journal_by_id, update_journal_wellness_state
 from app.services.nlp_service import NLPService
 from app.utils.logger_util import logger
+from app.utils.crypto_utils import decrypt
+from app.config.env_config import env
 import asyncio
 
 class NLPcontroller:
@@ -34,6 +37,6 @@ class NLPcontroller:
             preds = self.nlp_service.analyze_text(decrypted_content)
 
         # Update journal entry with mood analysis
-        await update_journal_mood(journal_id, user_id, preds)
+        await update_journal_wellness_state(journal_id, user_id, preds)
         logger.info(f"Updated mood for journal {journal_id}")
         return preds

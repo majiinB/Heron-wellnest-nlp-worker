@@ -29,7 +29,7 @@ class EnvConfig(BaseSettings):
     DB_PORT: int = Field(default=5432, ge=1, le=65535)
     DB_USER: str = Field(default="postgres", min_length=1)
     DB_PASSWORD: Optional[str] = ""
-    DB_NAME: str = Field(default="nlp_worker_db", min_length=1)
+    DB_NAME: str = Field(default="heron_wellnest", min_length=1)
 
     # Encryption
     CONTENT_ENCRYPTION_KEY: str = Field(
